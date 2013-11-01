@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet Jockey's Ridge elevation</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" /><![endif]-->
+</head>
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+
+    <!-- links and references -->
+    <p>Jockey's Ridge elevation created in <a href="http://grass.osgeo.org/" target="_blank">GRASS GIS</a> and visualized using <a href="http://leafletjs.com/" target="_blank">Leaflet</a>. Created for <a href="http://courses.ncsu.edu/mea592/common/GIST_MEA592005.html" target="_blank">Special Topics Course: Multdimensional Geospatial Modeling</a> (MEA592/GIS595).</p>
+    <ul>
+    <li><a href="http://leafletjs.com/examples/quick-start.html" target="_blank">Quick Start Guide</a></li>
+    <li><a href="http://leafletjs.com/examples/quick-start-example.html" target="_blank">Quick Start Guide Example</a></li>
+    <li><a href="http://leafletjs.com/examples/layers-control.html" target="_blank">Layer Groups and Layers Control</a></li>
+    <li><a href="http://leafletjs.com/reference.html#tilelayer" target="_blank">L.TileLayer</a></li>
+    <li><a href="http://leafletjs.com/reference.html#imageoverlay" target="_blank">L.ImageOverlay</a></li>
+    <li><a href="http://leafletjs.com/reference.html#control-layers" target="_blank">L.Control.Layers</a></li>
+    <li><a href="http://switch2osm.org/using-tiles/getting-started-with-leaflet/" target="_blank">Switch2OSM: MapGetting started with Leaflet</a></li>
+    <li><a href="http://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">Leaflet-providers</a></li>
+    <li><a href="http://grass.osgeo.org/grass70/manuals/helptext.html" target="_blank">GRASS Location creation</a></li>
+    <li><a href="http://grass.osgeo.org/grass70/manuals/m.proj.html" target="_blank">m.proj</a></li>
+    <li><a href="http://grass.osgeo.org/grass70/manuals/r.proj.html" target="_blank">r.proj</a></li>
+    <li><a href="http://grass.osgeo.org/grass70/manuals/r.out.png.html" target="_blank">r.out.png</a></li>
+    <li><a href="http://gis.stackexchange.com/questions/48949/epsg-3857-or-4326-for-googlemaps-openstreetmap-and-leaflet" target="_blank">EPSG:3857 at GIS Stack Exchange</a></li>
+    <li><a href="http://wiki.openstreetmap.org/wiki/EPSG:3857" target="_blank">EPSG:3857 at OpenStreetMap wiki</a></li>
+    </ul>
+    <!-- and of links and references -->
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+    <script>
+
+        // create OpenStreetMap layer
+        var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            minZoom: 1,
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA</a>'
+        });
+
+        // create MapQuest layer
+        var mapquestUrl = 'http://oatile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png';
+        var subDomains = '1234';
+        var mapquestAttrib = 'Imagery &copy; <a href="http://open.mapquest.co.uk" target="_blank">MapQuest</a>';
+        var mapquest = new L.TileLayer(mapquestUrl, {maxZoom: 18, attribution: mapquestAttrib, subdomains: subDomains});
+
+        var imageUrl = 'example_jr_elev_2008_1m_EPSG3857.png';
+        var imageBounds = [[35.950953065, -75.6190280288889],
+                           [35.9665400269445, -75.6462273922222]];
+
+        // compute approximate center of the image
+        var imageCenter = [(imageBounds[0][0]+imageBounds[1][0])/2,
+                           (imageBounds[0][1]+imageBounds[1][1])/2];
+
+        // create image overlay layers
+        // set the opacity for the second image layer (range 0-1)
+        var imageLayer1 = L.imageOverlay(imageUrl, imageBounds);
+        var imageLayer2 = L.imageOverlay(imageUrl, imageBounds, {opacity: 0.5});
+
+        // create map object
+        // setting default map position and zoom
+        // adding only layers which should be visible at the beginning
+        var map = L.map('map', {
+            center: imageCenter,
+            zoom: 14,
+            layers: [osmLayer, imageLayer1]
+        });
+
+        // create list of all base layers
+        var baseLayers = {
+            "Open Street Map": osmLayer,
+            "MapQuest imagery": mapquest
+        };
+
+        // create list of all overlay layers
+        var overlayLayers = {
+            "Opaque elevation": imageLayer1,
+            "Transparent elevation": imageLayer2
+        };
+
+        // create layer control
+        // first parameter are base layers
+        // we don't have any, so putting there null
+        // (null is accepted by L.control.layers)
+        var layerControl = L.control.layers(baseLayers, overlayLayers);
+
+        // add layer control to the map object
+        layerControl.addTo(map)
+
+    </script>
+</body>
+</html>
+

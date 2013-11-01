@@ -1,0 +1,25 @@
+body {
+    font-family: helvetica,arial,sans-serif;
+}
+
+pre {
+    overflow: auto;
+    overflow-y: hidden;  /* fixes display issues on Chrome browsers */
+
+    font-size: 13px;
+    letter-spacing: 0.015em;
+    line-height: 120%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background-color: #f8f8f8;
+}
+
+/* over write the style of a for hyperlink headers from pandoc */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: #444444;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+}

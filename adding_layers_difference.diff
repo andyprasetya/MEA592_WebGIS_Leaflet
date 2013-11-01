@@ -1,0 +1,66 @@
+--- example-one-overlay.html	2013-10-10 16:58:41.171022527 -0400
++++ example-two-layers-and-two-overlays.html	2013-10-03 21:22:43.000000000 -0400
+@@ -11,8 +11,6 @@
+ </head>
+ <body>
+     <div id="map" style="width: 600px; height: 400px"></div>
+ 
+     <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+     <script>
+@@ -38,9 +36,14 @@
+            attribution: 'Map data &copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors <a href="http://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA</a>'
+         });
+ 
++        // create MapQuest layer
++        var mapquestUrl = 'http://oatile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png';
++        var subDomains = '1234';
++        var mapquestAttrib = 'Imagery &copy; <a href="http://open.mapquest.co.uk" target="_blank">MapQuest</a>';
++        var mapquest = new L.TileLayer(mapquestUrl, {maxZoom: 18, attribution: mapquestAttrib, subdomains: subDomains});
+ 
+         var imageUrl = 'jr_elev_2008_1m_elsamap_EPSG3857.png';
+         var imageBounds = [[35.950953065, -75.6190280288889],
+@@ -50,28 +53,37 @@
+         var imageCenter = [(imageBounds[0][0]+imageBounds[1][0])/2,
+                            (imageBounds[0][1]+imageBounds[1][1])/2];
+ 
+-        // create image overlay layer
+-        var imageLayer = L.imageOverlay(imageUrl, imageBounds);
++        // create image overlay layers
++        // set the opacity for the second image layer (range 0-1)
++        var imageLayer1 = L.imageOverlay(imageUrl, imageBounds);
++        var imageLayer2 = L.imageOverlay(imageUrl, imageBounds, {opacity: 0.5});
+ 
+         // create map object
+         // setting default map position and zoom
+-        // adding layers
++        // adding only layers which should be visible at the beginning
+         var map = L.map('map', {
+             center: imageCenter,
+             zoom: 14,
+-            layers: [osmLayer, imageLayer]
++            layers: [osmLayer, imageLayer1]
+         });
+ 
+-        // create list of overlay layers
++        // create list of all base layers
++        var baseLayers = {
++            "Open Street Map": osmLayer,
++            "MapQuest imagery": mapquest
++        };
++
++        // create list of all overlay layers
+         var overlayLayers = {
+-            "Elevation": imageLayer
++            "Opaque elevation": imageLayer1,
++            "Transparent elevation": imageLayer2
+         };
+ 
+         // create layer control
+         // first parameter are base layers
+         // we don't have any, so putting there null
+         // (null is accepted by L.control.layers)
+-        var layerControl = L.control.layers(null, overlayLayers);
++        var layerControl = L.control.layers(baseLayers, overlayLayers);
+ 
+         // add layer control to the map object
+         layerControl.addTo(map)

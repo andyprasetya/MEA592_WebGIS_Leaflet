@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet Jockey's Ridge elevation</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" /><![endif]-->
+</head>
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+    <script>
+
+        // create OpenStreetMap layer
+        var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            minZoom: 1,
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>'
+        });
+
+        // hardcoded image URL
+        var imageUrl = 'example_jr_elev_2008_1m_EPSG3857.png';
+        // the coordinates are in the order
+        // SE (Lat Lon)
+        // NW (Lat Lon)
+        var imageBounds = [[35.95095306, -75.61902803],
+                           [35.96654003, -75.64622739]];
+
+        // compute approximate center of the image
+        var imageCenter = [(imageBounds[0][0]+imageBounds[1][0])/2,
+                           (imageBounds[0][1]+imageBounds[1][1])/2];
+
+        // create image overlay layer
+        var imageLayer = L.imageOverlay(imageUrl, imageBounds);
+
+        // create map object
+        // setting default map position and zoom
+        // adding layers
+        var map = L.map('map', {
+            center: imageCenter,
+            zoom: 14,
+            layers: [osmLayer, imageLayer]
+        });
+
+        // create list of overlay layers
+        var overlayLayers = {
+            "Elevation": imageLayer
+        };
+
+        // create layer control
+        // first parameter are base layers
+        // we don't have any, so putting there null
+        // (null is accepted by L.control.layers)
+        var layerControl = L.control.layers(null, overlayLayers);
+
+        // add layer control to the map object
+        layerControl.addTo(map)
+
+    </script>
+</body>
+</html>
+
