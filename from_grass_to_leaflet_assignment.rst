@@ -6,7 +6,7 @@ use some temporal modules but most importantly we will play with a web
 page which uses Leaflet JavaScript library.
 
 
-Visualizing one image by hand
+Visualizing one image
 =============================
 
 
@@ -46,7 +46,7 @@ Then it asks about creating new mapset, press *Cancel*.
 GRASS should now start into the newly created location.
 
 
-Create an image the new location
+Create an image in the new location
 --------------------------------
 
 First we need to get the region of the map in our location. For this we
@@ -67,7 +67,7 @@ from the old location to our new location.
     r.proj input=elev_2008_1m location=nc_with_JR_2 mapset=Jockeys_Ridge
 
 The export to PNG image is best done by ``r.out.png`` which uses
-the current computation region. The ``-t`` flag ensures that the NULL
+the current computational region. The ``-t`` flag ensures that the NULL
 cells will be transparent.
 
 ::
@@ -120,7 +120,7 @@ Improving the web page
 ----------------------
 
 Now we will edit the ``image_page.html`` web page to something
-more that the existing page provides to us.
+more than what the existing page provides to us.
 
 Add a new base layer::
 
@@ -130,7 +130,7 @@ Add a new base layer::
     var mapquestAttrib = 'Imagery &copy; <a href="http://open.mapquest.co.uk" target="_blank">MapQuest</a>';
     var mapquest = new L.TileLayer(mapquestUrl, {maxZoom: 18, attribution: mapquestAttrib, subdomains: subDomains});
 
-Create two layer with different opacities::
+Create two layers with different opacities::
 
     var imageLayer10 = L.imageOverlay(imageUrl, imageBounds, {opacity: 1.0});
     var imageLayer05 = L.imageOverlay(imageUrl, imageBounds, {opacity: 0.5});
