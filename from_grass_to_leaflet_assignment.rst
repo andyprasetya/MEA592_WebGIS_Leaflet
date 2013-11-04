@@ -47,7 +47,7 @@ GRASS should now start into the newly created location.
 
 
 Create an image in the new location
---------------------------------
+-----------------------------------
 
 First we need to get the region of the map in our location. For this we
 can use the ``-g`` flag of ``r.proj`` module and than use the output
