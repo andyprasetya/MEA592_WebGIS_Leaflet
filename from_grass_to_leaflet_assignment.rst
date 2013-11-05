@@ -102,11 +102,22 @@ same order and should be::
 Add the image to the web page
 -----------------------------
 
-And now we will edit the ``image_page.html`` web page.
+Now we need will add the image to the Leaflet web page.
+Put the file ``image_page.html`` to the same directory as
+you saved the exported image.
+
+Open the web page in web browser and in the text editor.
+
+Now you need to find the places in the web page to insert the following
+lines (this should be easy because some of the lines are actually
+already there and you just need to change them).
 
 Insert the file name::
 
     var imageUrl = 'jr_elev_2008_1m_EPSG3857.png';
+
+The file name should be relative file path to the ``image_page.html``
+file, so if they are in the same directory, the file name is enough.
 
 Insert the coordinates::
 
@@ -116,6 +127,24 @@ Insert the coordinates::
 Note that the coordinates are in the order SE, NW which differs from
 the order outputted from ``m.proj`` which is EN, WS (different corners
 are used to define the map extent).
+
+Reload the page in the web browser and see the result. If you don't
+see anything or you don't see what you expected, you have to open
+developer tools in you web browser. In Firefox, go to main menu::
+
+    Tools --> Web Developer --> Toggle tools
+
+In Chrome or Chromium go to main menu::
+
+    Tools --> Developer Tools
+
+In Firefox, there is even a JavaScript editor Scratchpad in::
+
+    Tools --> Web Developer --> Scratchpad
+
+There is a lot of other tools including debugger often build-in in all
+web browsers, check the Internet for suggestions if what you learned
+so far, is not enough for you.
 
 
 Improving the web page
