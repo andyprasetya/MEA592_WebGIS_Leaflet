@@ -102,6 +102,8 @@ same order and should be::
 Add the image to the web page
 -----------------------------
 
+And now we will edit the ``image_page.html`` web page.
+
 Insert the file name::
 
     var imageUrl = 'jr_elev_2008_1m_EPSG3857.png';
