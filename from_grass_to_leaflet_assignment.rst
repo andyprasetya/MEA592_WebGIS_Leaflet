@@ -376,3 +376,29 @@ does not work in GRASS *Command console*. You need to use the large
 input box in GRASS module form or to create a file and provide the name
 of this file if you are not using the command line on Unix-like systems.
 
+
+Appendix: Publishing online map through Google Drive
+====================================================
+This will allow you to publish your leaflet map by adding your files to Google
+Drive and then you can even display it on your course Google site. 
+
+1. Create a new folder on Google Drive and make it public ('Public on the web').
+2. Upload your files to this folder, your main html file should be called 'index.html'.
+3. When you are in this folder (in Google Drive), copy the long hash name (something like 0B7CQoT4YE2mMV2VkeXlQSUs0LUd) and put it after 'https://googledrive.com/host/', this is now the URL of your map.
+4. If everything works, when you display the URL in a browser, you should see the leaflet map.
+
+Adding your map to your course Google Site:
+
+1. Start editing the page.
+2. Go to Insert -> More Gadgets -> choose iframe (the second one) -> Select -> insert the URL and optionally set size, title -> OK
+3. The possible result is https://sites.google.com/a/ncsu.edu/petrasova_mea582fall2013/home/leaflet
+
+Troubleshooting
+---------------
+If the map URL is not working for you, make sure you have downloaded the ``lib_leaflet``
+and changed the links in the code to link to this library.
+Also check that all jquery links start with ``//`` and not with ``http://``.
+These changes are now reflected in the code (so you can look how it should look like),
+but you might have downloaded the code before the change.
+These links are needed in order to make the links accessible from https protocols (used by Google Drive).
+
