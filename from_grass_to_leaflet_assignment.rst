@@ -211,12 +211,14 @@ same place where ``animation_page.html`` file is.
 
 Moreover, we need set of Python files related to ``r.out.leaflet`` module
 which we will use to export our maps. Download the zip file from
+https://github.ncsu.edu/osgeorel/r.out.leaflet. Unzip the file.
 
 To run ``r.out.leaflet`` module form GUI you need to go to *File* menu
-and *Launch script*. Then you need to 
+and *Launch script*. Then you need to find a ``r.out.leaflet.py`` file
+(from the unpacked zip file).
 
-Depending
-on you system and how you obtained these two files you will need to
+If you are using command line, depending
+on you system and how you obtained ``r.out.leaflet`` files, you will need to
 change the ``r.out.leaflet`` module call::
 
     r.out.leaflet ...
@@ -228,6 +230,14 @@ to something like this::
 or even this::
 
     absolute/path/to/python r.out.leaflet.py ...
+
+And you need to be in the directory with ``r.out.leaflet.py`` file
+to be able to write only ``r.out.leaflet.py``, otherwise you need to
+use also the absolute path to this path.
+
+Note that it is currenly not possible to open the GUI of module
+which is not installed, so you it is highly probable that you need
+to use command line.
 
 
 Register maps into the temporal database
