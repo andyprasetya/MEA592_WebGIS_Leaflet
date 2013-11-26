@@ -211,7 +211,9 @@ same place where ``animation_page.html`` file is.
 
 Moreover, we need set of Python files related to ``r.out.leaflet`` module
 which we will use to export our maps. Download the zip file from
-https://github.ncsu.edu/osgeorel/r.out.leaflet. Unzip the file.
+https://github.ncsu.edu/osgeorel/r.out.leaflet web page (zip file link is
+https://github.ncsu.edu/osgeorel/r.out.leaflet/archive/master.zip).
+Unzip the file.
 
 To run ``r.out.leaflet`` module form GUI you need to go to *File* menu
 and *Launch script*. Then you need to find a ``r.out.leaflet.py`` file
