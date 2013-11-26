@@ -209,8 +209,13 @@ You need a file named ``animation_page.html`` delivered with this
 assignment. You also need to create a directory named ``data`` at the
 same place where ``animation_page.html`` file is.
 
-Moreover, we need two Python files ``r.out.png.location.py`` and
-``r.out.leaflet.py`` which we will use to export our maps. Depending
+Moreover, we need set of Python files related to ``r.out.leaflet`` module
+which we will use to export our maps. Download the zip file from
+
+To run ``r.out.leaflet`` module form GUI you need to go to *File* menu
+and *Launch script*. Then you need to 
+
+Depending
 on you system and how you obtained these two files you will need to
 change the ``r.out.leaflet`` module call::
 
