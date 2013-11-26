@@ -6,7 +6,7 @@ JavaScript library for the course *Special Topics Course:*
 *Multidimensional Geospatial Modeling*
 (http://courses.ncsu.edu/mea592/common/GIST_MEA592005.html).
 
-The main document is ``four_layers_example.html``.
+The main document is ``from_grass_to_leaflet_assignment.rst``.
 The slides with basic terminology can be generated
 from ``leaflet_basics_lecture.rst``.
 
