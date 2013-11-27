@@ -399,6 +399,9 @@ Appendix: Publishing online map through Google Drive
 This will allow you to publish your leaflet map by adding your files to Google
 Drive and then you can even display it on your course Google site. 
 
+Steps
+-----
+
 1. Create a new folder on Google Drive and make it public (*Public on the web*).
 2. Upload your files to this folder, your main html file should be called ``index.html``.
 3. When you are in this folder (in Google Drive), copy the long hash name (something like ``0B7CQoT4YE2mMV2VkeXlQSUs0LUd``) and put it after ``https://googledrive.com/host/``, this is now the URL of your map.
