@@ -257,7 +257,7 @@ elevation maps if you haven't done so. Start by creating a dataset::
 Get the list of of you maps::
 
     g.mlist type=rast pattern="elev_be_19.._1m$" sep=, -em
-    g.mlist type=rast pattern="elev_200._1m$" sep=, -em
+    g.mlist type=rast pattern="elev_...._1m$" sep=, -em
 
 Here we are using ``g.mlist`` and regular expressions (``-e`` flag) but
 you can also use standard ``g.list``. Just note that you need the maps
@@ -270,6 +270,7 @@ dataset::
     elev_be_1974_1m@Jockeys_Ridge,1974
     elev_be_1995_1m@Jockeys_Ridge,1995
     elev_be_1998_1m@Jockeys_Ridge,1998
+    elev_1999_1m@Jockeys_Ridge,1999
     elev_2001_1m@Jockeys_Ridge,2001
     elev_2007_1m@Jockeys_Ridge,2007
     elev_2008_1m@Jockeys_Ridge,2008
