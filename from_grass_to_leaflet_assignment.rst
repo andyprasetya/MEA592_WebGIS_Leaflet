@@ -397,8 +397,12 @@ of this file if you are not using the command line on Unix-like systems.
 
 Appendix: Publishing online map through Google Drive
 ====================================================
-This will allow you to publish your leaflet map by adding your files to Google
-Drive and then you can even display it on your course Google site. 
+
+This will allow you to publish your Leaflet page by adding your files to Google
+Drive and then you can even display it on your course Google site.
+This is advantageous if you don't have any other publicly accessible place
+where to put a website such as some ``www`` directory on your organization Linux server.
+
 
 Steps
 -----
@@ -414,8 +418,10 @@ Adding your map to your course Google Site:
 2. Go to *Insert* -> *More Gadgets* -> choose iframe (the second one) -> *Select* -> insert the URL and optionally set size, title -> *OK*
 3. The possible result is https://sites.google.com/a/ncsu.edu/petrasova_mea582fall2013/home/leaflet
 
+
 Troubleshooting
 ---------------
+
 If the map URL is not working for you, make sure you have downloaded the ``lib_leaflet``
 and changed the links in the code to link to this library.
 Also check that all jquery links start with ``//`` and not with ``http://``.
