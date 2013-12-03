@@ -404,7 +404,7 @@ Steps
 -----
 
 1. Create a new folder on Google Drive and make it public (*Public on the web*).
-2. Upload your files to this folder, your main html file should be called ``index.html``.
+2. Upload your files to this folder, your main HTML file should be called ``index.html`` (you can rename your file, e.g. ``animation_page.html`` to ``index.html``).
 3. When you are in this folder (in Google Drive), copy the long hash name (something like ``0B7CQoT4YE2mMV2VkeXlQSUs0LUd``) and put it after ``https://googledrive.com/host/``, this is now the URL of your map.
 4. If everything works, when you display the URL in a browser, you should see the leaflet map.
 
