@@ -429,3 +429,10 @@ These changes are now reflected in the code (so you can look how it should look 
 but you might have downloaded the code before the change.
 These links are needed in order to make the links accessible from https protocols (used by Google Drive).
 
+
+License
+-------
+
+This work by Vaclav Petras is licensed under a Creative Commons
+Attribution-ShareAlike 4.0 International License,
+http://creativecommons.org/licenses/by-sa/4.0/.
